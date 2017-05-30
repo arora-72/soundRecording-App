@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class playSoundsViewController: UIViewController {
+class playSoundsViewController: UIViewController,AVAudioRecorderDelegate {
     
     //MARK: properties
     
@@ -30,18 +30,18 @@ class playSoundsViewController: UIViewController {
         super.viewDidLoad()
 
         do{
-            audioPlayer = try AVAudioPlayer(contentsOf: receivedAudio.filePathURL as URL)
+            audioPlayer = try AVAudioPlayer(contentsOf: filePath)
         }catch{
             audioPlayer = nil
-            let refreshAlert = UIAlertController(title: "fatal error ", message: "no audio has been recorded yet", preferredStyle:.alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        )
+//            let refreshAlert = UIAlertController(title: "fatal error ", message: "no audio has been recorded yet", preferredStyle:.alert)
+//            refreshAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//        )
         }
         audioPlayer.enableRate = true
         
         audioEngine = AVAudioEngine()
         do{
-            audioFile = try AVAudioFile(forReading: receivedAudio.filePathURL as URL)
+            audioFile = try AVAudioFile(forReading: filePath as URL)
         }catch{
             audioFile = nil
         }

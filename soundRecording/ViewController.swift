@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+var filePath : URL!
+
 class ViewController: UIViewController,AVAudioRecorderDelegate {
     
     // MARK: Outlets
@@ -68,14 +70,15 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
             print("error in intialising the av audio session")
         }
         //create a name for the file 
-        let filename = "recording1.wav"
+        let filename = "usersVoice.wav"
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let pathArray = [dirPath, filename]
-        let fileUrl = URL(string: pathArray.joined(separator: "/"))
+        let fileURL = URL(string: pathArray.joined(separator: "/"))
+
         
         do{
             //initializing and preparing the recorder
-            audioRecorder = try AVAudioRecorder(url: fileUrl!, settings: [String:AnyObject]())
+            audioRecorder = try AVAudioRecorder(url: fileURL!, settings: [String:AnyObject]())
         }catch{
             print("failed to initialize ansd preparing the recorder")
         }
@@ -107,6 +110,11 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             recordedAudio = RecordedAudio(filePathURL: recorder.url, title: recorder.url.pathExtension)
+            print("audio has been recorded")
+           print(recordedAudio.filePathURL)
+            print(recordedAudio.title)
+            filePath = recordedAudio.filePathURL
+            print(filePath)
             self.performSegue(withIdentifier: "stopRecording", sender: self)
         } else {
             print("Recording was not successful")
@@ -124,7 +132,8 @@ class ViewController: UIViewController,AVAudioRecorderDelegate {
             
             let data = recordedAudio
             playSoundVC.receivedAudio = data
-            print(data as Any)
+            // print(recordedAudio.filePathURL)
+    
         
     }
 }

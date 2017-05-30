@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,10 +84,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rRZ-Wa-wUs">
-                                <rect key="frame" x="90.5" y="258.5" width="194" height="150"/>
+                                <rect key="frame" x="16" y="258.5" width="343" height="150"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adh-U1-qwz">
-                                        <rect key="frame" x="0.0" y="0.0" width="194" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <state key="normal" title="start">
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -95,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q1-XR-Iuk">
-                                        <rect key="frame" x="0.0" y="60" width="194" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="343" height="30"/>
                                         <state key="normal" title="stop">
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -104,7 +105,7 @@
                                         </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FS0-ab-UCT">
-                                        <rect key="frame" x="-2" y="120" width="198" height="31"/>
+                                        <rect key="frame" x="-2" y="120" width="347" height="31"/>
                                         <connections>
                                             <action selector="sliderDidMove:" destination="wV6-C9-bjK" eventType="valueChanged" id="lF2-mu-nzA"/>
                                         </connections>
@@ -114,7 +115,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="rRZ-Wa-wUs" secondAttribute="trailing" id="Kxu-LF-A9c"/>
                             <constraint firstItem="rRZ-Wa-wUs" firstAttribute="centerY" secondItem="WJK-XT-xiO" secondAttribute="centerY" id="QLE-rJ-NHc"/>
+                            <constraint firstItem="rRZ-Wa-wUs" firstAttribute="leading" secondItem="WJK-XT-xiO" secondAttribute="leadingMargin" id="kxT-8k-TWs"/>
                             <constraint firstItem="rRZ-Wa-wUs" firstAttribute="centerX" secondItem="WJK-XT-xiO" secondAttribute="centerX" id="lpH-Ac-Fy6"/>
                         </constraints>
                     </view>
